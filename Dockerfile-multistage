@@ -1,0 +1,14 @@
+FROM inn0kenty/pyinstaller-alpine:3.7
+WORKDIR /src
+COPY . .
+RUN /pyinstaller/pyinstaller.sh \
+    --onefile \
+    --clean \
+    hello-flask.py &&\
+    mkdir /output &&\
+    cp /src/dist/hello-flask /output
+
+FROM alpine
+COPY --from=0 /output/hello-flask /bin
+EXPOSE 5000
+ENTRYPOINT ["hello-flask"]
