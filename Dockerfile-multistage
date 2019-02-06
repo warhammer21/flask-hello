@@ -8,3 +8,7 @@ RUN /pyinstaller/pyinstaller.sh \
     mkdir /output &&\
     cp /src/dist/hello-flask /output
 
+FROM alpine
+COPY --from=0 /output/hello-flask /bin
+EXPOSE 5000
+ENTRYPOINT ["hello-flask"]
