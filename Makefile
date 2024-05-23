@@ -1,6 +1,7 @@
 IMAGE_NAME := flask-helo-slim
 DOCKER_REGISTRY := docker.io
 DOCKER_USERNAME := warhammer21
+DOCKER_PASSWORD := Shreyak33
 
 build:
 	@docker build -t $(IMAGE_NAME) .
